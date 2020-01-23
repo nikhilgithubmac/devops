@@ -1,2 +1,3 @@
-# welcome to my repo
-github test repo
+# my devops repository
+this repository contains code for docker kubernetes and terraform
+

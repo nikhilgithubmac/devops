@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: twitter-deployment-2.0
+  namespace: twitter
+  labels:
+    company: twitter
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      company: twitter
+  template:
+    metadata:
+      labels:
+        company: twitter
+    spec:
+      containers:
+      - name: twitter
+        image: nginx
+        command: ['sh', '-c',"echo $(WELCOME_NOTE) > /usr/share/nginx/html/index.html &&sleep 100000000"]
+        ports:
+        - containerPort: 80
+        env:
+        - name: WELCOME_NOTE
+          valueFrom:
+            configMapKeyRef:
+               name: twitter-config-map
+               key: twitterWelcomeKey

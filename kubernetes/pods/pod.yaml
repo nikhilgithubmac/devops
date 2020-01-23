@@ -4,14 +4,14 @@ metadata:
   name: fb-configmap-pod-2.0
   namespace: facebook
 spec:
-  containers:
+  containers:y
    - name: fb
      image: nginx
      command: ['sh', '-c',"echo $(MY_VAR) > /usr/share/nginx/html/index.html &&sleep 100000000"]
      env:
        - name: MY_VAR
          valueFrom:
-           configMapKeyRef:
+           configMapKeyRef:x
              name: fbconfig-map
              key: head
              key: body

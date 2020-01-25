@@ -73,7 +73,7 @@ spec:
         ports:
         - containerPort: 8080
         volumeMounts:
-        - mountPath: "/mnt/storage"
+        - mountPath: /var/jenkins_home
           name: my-storage
       volumes:
       - name: my-storage
